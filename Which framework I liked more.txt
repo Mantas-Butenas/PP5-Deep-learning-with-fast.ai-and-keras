@@ -1,0 +1,6 @@
+I chose to use Keras and fast.ai because from the lectures, they seemed to be easier to use and understand for beginners. I preferred fast.ai from the two.
+The framework seemed more intuitive for me, Data Preparation part is nicely structured and easier to understand, it's almost like completing a survey – you type
+in what you need and what fits your data and everything else is done by the learner. The only thing left to do is adjust the learning rate and the number of epochs.
+With Keras I felt that I had less control on what is happening, which is a skill issue. For example choosing activation functions for each layer
+didn't feel like educated guesses, but just random guesses to get the best RMSE score. I have tuned the parameters and activation functions for a while (see
+log keras.txt), but could not reach the RMSE score that I was able to reach with fast.ai, so I prefer the framework with which I was able to get a better score.

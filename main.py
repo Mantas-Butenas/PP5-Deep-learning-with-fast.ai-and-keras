@@ -22,26 +22,19 @@ to = TabularPandas(
     splits=splits
 )
 
-# Define a dictionary mapping original variable names to descriptive names
-variable_names_mapping = {
-    'X1': 'Relative Compactness',
-    'X2': 'Surface Area',
-    'X3': 'Wall Area',
-    'X4': 'Roof Area',
-    'X5': 'Overall Height',
-    'X6': 'Orientation',
-    'X7': 'Glazing Area',
-    'X8': 'Glazing Area Distribution',
-}
+# variable_names_mapping = {
+#     'X1': 'Relative Compactness',
+#     'X2': 'Surface Area',
+#     'X3': 'Wall Area',
+#     'X4': 'Roof Area',
+#     'X5': 'Overall Height',
+#     'X6': 'Orientation',
+#     'X7': 'Glazing Area',
+#     'X8': 'Glazing Area Distribution',
+# }
 
-# Rename the columns in your DataFrame
-energy_efficiency.rename(columns=variable_names_mapping, inplace=True)
-
-# Rename the target variable names
-energy_efficiency.rename(columns={'Y1': 'Heating Load', 'Y2': 'Cooling Load'}, inplace=True)
-
-# Now your DataFrame will have more human-readable column names
-print(energy_efficiency.head())
+# energy_efficiency.rename(columns=variable_names_mapping, inplace=True)
+# energy_efficiency.rename(columns={'Y1': 'Heating Load', 'Y2': 'Cooling Load'}, inplace=True)
 
 # Initialize the TabularDataLoaders
 dls = to.dataloaders(bs=64)
