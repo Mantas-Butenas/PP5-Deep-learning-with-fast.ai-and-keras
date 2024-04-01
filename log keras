@@ -1,0 +1,87 @@
+#1
+model = Sequential([
+    Dense(128, activation='relu', input_shape=(X_train.shape[1],)),
+    Dense(64, activation='relu'),
+    Dense(2)  # Output layer with 2 neurons for Y1 and Y2
+])
+
+# Train the model
+history = model.fit(X_train, y_train, epochs=38, batch_size=64, validation_data=(X_valid, y_valid), verbose=1)
+
+RMSE on validation set: 5.130898043295163
+----------------------------------------------------------------------------------------------------------------
+#2
+model = Sequential([
+    Dense(256, activation='relu', input_shape=(X_train.shape[1],)),
+    Dense(128, activation='relu'),
+    Dense(64, activation='relu'),
+    Dense(2)  # Output layer with 2 neurons for Y1 and Y2
+])
+epochs=50
+
+RMSE on validation set: 4.08046714335877
+-----------------------------------------------------------------------------------------
+#3 epochs=50
+model = Sequential([
+    Dense(256, activation='relu', input_shape=(X_train.shape[1],)),
+    Dense(128, activation='relu'),
+    Dense(64, activation='relu'),
+    Dense(2)  # Output layer with 2 neurons for Y1 and Y2
+])
+
+early_stopping = EarlyStopping(monitor='val_loss', patience=5, restore_best_weights=True)
+
+RMSE on validation set: 3.5011776523838067
+-----------------------------------------------------------------------------------------
+#4
+model = Sequential([
+    Dense(256, activation='tanh', input_shape=(X_train.shape[1],)),
+    Dense(128, activation='tanh'),
+    Dense(64, activation='tanh'),
+    Dense(2)  # Output layer with 2 neurons for Y1 and Y2
+])
+
+RMSE on validation set: 10.034638083596098
+-----------------------------------------------------------------------------------------
+#5
+model = Sequential([
+    Dense(256, activation='leaky_relu', input_shape=(X_train.shape[1],)),
+    Dense(128, activation='leaky_relu'),
+    Dense(64, activation='leaky_relu'),
+    Dense(2)  # Output layer with 2 neurons for Y1 and Y2
+])
+
+RMSE on validation set: 3.7289372793570443
+-----------------------------------------------------------------------------------------
+#6
+model = Sequential([
+    Dense(256, activation='leaky_relu', input_shape=(X_train.shape[1],)),
+    Dense(128, activation='leaky_relu'),
+    Dense(64, activation='leaky_relu'),
+    Dense(2)  # Output layer with 2 neurons for Y1 and Y2
+])
+
+RMSE on validation set: 3.7289372793570443
+-----------------------------------------------------------------------------------------
+#7
+# Standardized the input features, epochs=80
+
+model = Sequential([
+    Dense(256, activation='relu', input_shape=(X_train_scaled.shape[1],)),
+    Dense(128, activation='relu'),
+    Dense(64, activation='relu'),
+    Dense(2)  # Output layer with 2 neurons for Y1 and Y2
+])
+
+RMSE on validation set: 2.26270651382864
+-----------------------------------------------------------------------------------------
+#8 FINAL:epochs=80
+
+model = Sequential([
+    Dense(256, activation='tanh', input_shape=(X_train_scaled.shape[1],)),
+    Dense(128, activation='leaky_relu'),
+    Dense(64, activation='relu'),
+    Dense(2)  # Output layer with 2 neurons for Y1 and Y2
+])
+
+RMSE on validation set: 2.134608694341405

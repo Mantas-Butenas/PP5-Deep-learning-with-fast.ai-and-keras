@@ -6,6 +6,7 @@ from sklearn.metrics import mean_squared_error
 from keras.models import Sequential
 from keras.layers import Dense
 from keras.callbacks import EarlyStopping
+import matplotlib.pyplot as plt
 
 # Load the dataset
 energy_efficiency = pd.read_csv('https://archive.ics.uci.edu/static/public/242/data.csv')
@@ -43,3 +44,33 @@ y_pred = model.predict(X_valid_scaled)
 rmse_valid = np.sqrt(mean_squared_error(y_valid, y_pred))
 
 print("RMSE on validation set:", rmse_valid)
+
+# Plotting Y1
+plt.figure(figsize=(8, 6))
+plt.scatter(y_valid['Y1'], y_pred[:, 0], color='blue', label='Y1 Predictions')
+plt.plot([y_valid['Y1'].min(), y_valid['Y1'].max()],
+         [y_valid['Y1'].min(), y_valid['Y1'].max()],
+         color='red',
+         linestyle='--',
+         label='Ideal Line')
+plt.title('Y1 Predictions vs Actual')
+plt.xlabel('Actual Y1')
+plt.ylabel('Predicted Y1')
+plt.legend()
+plt.grid(True)
+plt.show()
+
+# Plotting Y2
+plt.figure(figsize=(8, 6))
+plt.scatter(y_valid['Y2'], y_pred[:, 1], color='green', label='Y2 Predictions')
+plt.plot([y_valid['Y2'].min(), y_valid['Y2'].max()],
+         [y_valid['Y2'].min(), y_valid['Y2'].max()],
+         color='red',
+         linestyle='--',
+         label='Ideal Line')
+plt.title('Y2 Predictions vs Actual')
+plt.xlabel('Actual Y2')
+plt.ylabel('Predicted Y2')
+plt.legend()
+plt.grid(True)
+plt.show()
